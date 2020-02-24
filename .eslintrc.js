@@ -19,6 +19,11 @@ module.exports = {
     semi: ["error", "never"],
     "no-console": "off",
     "arrow-parens": ["error", "as-needed"],
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "no-param-reassign": "off",
+    "no-await-in-loop": "off",
+    "no-plusplus": "off"
   },
 };
