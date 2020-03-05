@@ -23,12 +23,15 @@ async function ask(prompts, data, done) {
     for (let i = 0; i < promptsKeys.length; i++) {
         await createPrompt(data, promptsKeys[i], prompts[promptsKeys[i]])
     }
-    console.log(data)
     done()
 }
 
 module.exports = function askUserQuestions(prompts) {
-    return (files, metal, done) => {
-        ask(prompts, metal.metadata(), done)
+    return async (files, metal, done) => {
+        try {
+            await ask(prompts, metal.metadata(), done)
+        } catch (err) {
+            console.error(err)
+        }
     }
 }

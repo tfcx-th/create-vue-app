@@ -9,7 +9,7 @@ async function create(name) {
         const repo = await fetchRepoList()
         const tag = await fetchRepoTags(repo)
         const templateDir = await downloadTemplate(repo, tag)
-        await generate(name, path.resolve(name), templateDir)
+        await generate(name, path.join(process.cwd(), name), templateDir)
     } catch (err) {
         console.error(err)
     }

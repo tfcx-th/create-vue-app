@@ -23,6 +23,10 @@ async function fetchRepoTags(repo) {
     const spinner = ora('fetching template tags, please wait ...')
     spinner.start()
     let { data } = await axios.get(repoTagsUrl)
+    if (data.length === 0) {
+        spinner.succeed('only one version')
+        return undefined
+    }
     data = data.map(item => item.name)
     spinner.succeed('fetch template tags success')
     const { tag } = await inquirer.prompt({

@@ -6,12 +6,13 @@ const downloadDir = `${process.env[process.platform === 'darwin' ? 'HOME' : 'USE
 
 module.exports = async function downloadTemplate(repo, tag) {
     // 查找本地是否存在，不存在则从远程下载
-    const templateDir = `${downloadDir}/${repo}-${tag}`
+    const templateDir = tag ? `${downloadDir}/${repo}-${tag}` : `${downloadDir}/${repo}`
     if (!fs.existsSync(templateDir)) {
         const spinner = ora('downloading template, please wait ...')
         spinner.start()
         try {
-            await download(`vuejs-templates/${repo}#${tag}`, templateDir)
+            const downloadUrl = tag ? `vuejs-templates/${repo}#${tag}` : `vuejs-templates/${repo}`
+            await download(downloadUrl, templateDir)
             spinner.succeed('download success')
         } catch (err) {
             spinner.fail('download failed')

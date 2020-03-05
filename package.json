@@ -25,6 +25,7 @@
     "handlebars": "^4.7.3",
     "inquirer": "^7.0.4",
     "metalsmith": "^2.3.0",
+    "minimatch": "^3.0.4",
     "ncp": "^2.0.0",
     "ora": "^4.0.3"
   }
